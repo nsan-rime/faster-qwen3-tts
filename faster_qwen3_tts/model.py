@@ -113,11 +113,11 @@ class FasterQwen3TTS:
         
         # Import here to avoid dependency issues (and suppress flash-attn warning)
         with suppress_flash_attn_warning():
-            from qwen_tts import Qwen3TTSModel
+            from .model_ext_vocab import ExtendedVocabQwen3TTSModel
         from .predictor_graph import PredictorGraph
         from .talker_graph import TalkerGraph
         # Load base model using qwen-tts library
-        base_model = Qwen3TTSModel.from_pretrained(
+        base_model = ExtendedVocabQwen3TTSModel.from_pretrained(
             model_name,
             device_map=device,
             torch_dtype=dtype,
